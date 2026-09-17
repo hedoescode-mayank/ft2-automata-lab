@@ -15,11 +15,12 @@ export default async function handler(req) {
     body.temperature = 0.7;
     body.max_tokens = 1000;
     
-    // Use either VITE_GROQ_API_KEY or GROQ_API_KEY
-    const apiKey = process.env.VITE_GROQ_API_KEY || process.env.GROQ_API_KEY;
+    // Use either VITE_GROQ_API_KEY or GROQ_API_KEY, and strip accidental quotes/spaces
+    let apiKey = process.env.VITE_GROQ_API_KEY || process.env.GROQ_API_KEY || "";
+    apiKey = apiKey.trim().replace(/^["']|["']$/g, '');
     
     if (!apiKey) {
-      return new Response(JSON.stringify({ error: 'Missing Groq API Key' }), { status: 500, headers: { 'Content-Type': 'application/json' } });
+      return new Response(JSON.stringify({ error: 'Missing Groq API Key in Vercel Settings' }), { status: 500, headers: { 'Content-Type': 'application/json' } });
     }
 
     const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
