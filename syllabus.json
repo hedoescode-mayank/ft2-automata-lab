@@ -1,0 +1,31 @@
+{
+  "name": "FT2 Interactive 3D Learning Platform",
+  "exam_scope": {
+    "unit_1": [
+      "NFA to DFA",
+      "epsilon-NFA to DFA",
+      "DFA minimization",
+      "Regular expressions for given languages",
+      "RE to FA",
+      "FA to RE",
+      "NFA and DFA equivalence",
+      "Two Way Finite Automata",
+      "Moore and Mealy Machines",
+      "Moore-Mealy equivalence"
+    ],
+    "unit_2": [
+      "CFG",
+      "Derivation Trees",
+      "Ambiguous and Unambiguous Grammars",
+      "Useless symbol elimination",
+      "Unit production elimination",
+      "Null production elimination",
+      "Chomsky Normal Form"
+    ]
+  },
+  "post_exam_locked": [
+    "properties of regular sets",
+    "pumping lemma",
+    "Greibach normal form"
+  ]
+}

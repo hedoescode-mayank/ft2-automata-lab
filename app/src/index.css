@@ -1,0 +1,29 @@
+@import "tailwindcss";
+
+@theme {
+  --color-slate-900: #0f172a;
+  --color-slate-800: #1e293b;
+  --color-cyan-400: #22d3ee;
+  --color-cyan-500: #06b6d4;
+  --color-emerald-400: #34d399;
+  --color-emerald-500: #10b981;
+  --color-rose-400: #fb7185;
+  --color-rose-500: #f43f5e;
+}
+
+body {
+  @apply bg-slate-900 text-slate-100 antialiased overflow-hidden selection:bg-cyan-500/30;
+}
+
+/* Custom glowing effects for nodes */
+.glow-cyan {
+  box-shadow: 0 0 15px rgba(34, 211, 238, 0.4);
+}
+
+.glow-emerald {
+  box-shadow: 0 0 15px rgba(52, 211, 153, 0.4);
+}
+
+.glow-rose {
+  box-shadow: 0 0 15px rgba(251, 113, 133, 0.4);
+}
