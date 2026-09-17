@@ -1625,26 +1625,21 @@ export async function fetchAgentResponse(
   if (!valid.length) return "Tell me what you are solving in the current FT-2 lab.";
 
   try {
-    const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
+    const response = await fetch("/api/tutor", {
       method: "POST",
-      headers: {
-        "Authorization": `Bearer ${import.meta.env.VITE_GROQ_API_KEY}`,
-        "Content-Type": "application/json"
-      },
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        model: "openai/gpt-oss-120b",
         messages: [
           { role: "system", content: buildSystemPrompt(context, labState) },
           ...valid
         ],
-        temperature: 0.7,
-        max_tokens: 1000
+        labState
       })
     });
 
     if (!response.ok) {
       const errText = await response.text();
-      let detail = `Groq API Error HTTP ${response.status}.`;
+      let detail = `Tutor service failed with HTTP ${response.status}.`;
       try {
         const data = JSON.parse(errText);
         if (typeof data?.error === "string") detail = data.error;
